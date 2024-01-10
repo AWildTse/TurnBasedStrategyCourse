@@ -6,6 +6,8 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     private Vector3 targetPosition;
+    private GridPosition gridPosition;
+
     [SerializeField] private Animator unitAnimator;
     [SerializeField] private float movespeed = 4f;
     [SerializeField] private float stoppingDistance = .1f;
@@ -16,6 +18,13 @@ public class Unit : MonoBehaviour
     {
         targetPosition = transform.position;
     }
+
+    private void Start()
+    {
+        gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
+    }
+
     private void Update()
     {
         if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
@@ -30,6 +39,13 @@ public class Unit : MonoBehaviour
         else
         {
             unitAnimator.SetBool(iswalking, false);
+        }
+
+        GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        if(newGridPosition != gridPosition)
+        {
+            LevelGrid.Instance.UnitMovedGridPosition(this, gridPosition, newGridPosition);
+            gridPosition = newGridPosition;
         }
     } 
 
