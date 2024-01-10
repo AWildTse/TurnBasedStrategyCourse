@@ -6,11 +6,11 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     private Vector3 targetPosition;
-    [SerializeField] private Animator _unitAnimator;
-    [SerializeField] private float _movespeed = 4f;
-    [SerializeField] private float _stoppingDistance = .1f;
-    [SerializeField] private float _rotateSpeed = 10f;
-    private const string _iswalking = "IsWalking";
+    [SerializeField] private Animator unitAnimator;
+    [SerializeField] private float movespeed = 4f;
+    [SerializeField] private float stoppingDistance = .1f;
+    [SerializeField] private float rotateSpeed = 10f;
+    private const string iswalking = "IsWalking";
 
     private void Awake()
     {
@@ -18,18 +18,18 @@ public class Unit : MonoBehaviour
     }
     private void Update()
     {
-        if (Vector3.Distance(transform.position, targetPosition) > _stoppingDistance)
+        if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
         {
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
         
-            transform.position += moveDirection * _movespeed * Time.deltaTime;
-            transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * _rotateSpeed);
-            _unitAnimator.SetBool(_iswalking, true);
+            transform.position += moveDirection * movespeed * Time.deltaTime;
+            transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
+            unitAnimator.SetBool(iswalking, true);
 
         }
         else
         {
-            _unitAnimator.SetBool(_iswalking, false);
+            unitAnimator.SetBool(iswalking, false);
         }
     } 
 

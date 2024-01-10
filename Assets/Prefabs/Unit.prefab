@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d54890ef4275a249a09c4f0bff522ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitAnimator: {fileID: 2871230520075330112}
-  _movespeed: 4
-  _stoppingDistance: 0.1
-  _rotateSpeed: 10
+  unitAnimator: {fileID: 2871230520075330112}
+  movespeed: 4
+  stoppingDistance: 0.1
+  rotateSpeed: 10
 --- !u!65 &-3270540546297276402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fbc335d0473d94a8359cd583e1af8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 2777847060226398743}
+  unit: {fileID: 2777847060226398743}
 --- !u!1001 &2777847062145733581
 PrefabInstance:
   m_ObjectHideFlags: 0
